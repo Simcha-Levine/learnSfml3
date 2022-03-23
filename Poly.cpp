@@ -1,7 +1,7 @@
 #include "Poly.hpp"
 #include <iostream>
 
-int corners = 14;
+int corners = 20;
 
 Poly::Poly(b2World &world, float scale, float x, float y, float width)
     : scale(scale), x(x), y(y), width(width),
@@ -16,7 +16,7 @@ Poly::Poly(b2World &world, float scale, float x, float y, float width)
 
     for (int i = 0; i < corners; i++)
     {
-        int min = (width * scale / 2) / 3;
+        int min = (width * scale / 2) * 0.5;
         int max = width * scale / 2;
         float r = min + rand() % (max - min);
 
@@ -35,8 +35,6 @@ Poly::Poly(b2World &world, float scale, float x, float y, float width)
     vertices[corners].position = sf::Vector2f(firstR * cos(firstAngle), firstR * sin(firstAngle));
 
     createShapes();
-
-    c = 't';
 }
 
 b2Body *Poly::createBody()
@@ -106,9 +104,14 @@ void Poly::setColor(sf::Color color)
 
 void Poly::onDetection(std::string o)
 {
-    // std::cout << "detected poly" << o << '\n';
     if (o == "barrier")
     {
-        setColor(sf::Color::White);
+        toOld = true;
     }
+}
+
+Poly::~Poly()
+{
+    world.DestroyBody(body);
+    // std::cout << "poly destroid\n";
 }

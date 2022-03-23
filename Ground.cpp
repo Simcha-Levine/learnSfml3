@@ -32,7 +32,7 @@ void Ground::draw(sf::RenderTarget &target, sf::RenderStates) const
     target.draw(rect);
 }
 
-void Ground::onDetection(std::string o)
+void Ground::onDetection(std::string)
 {
     // std::cout << "detected ground" << o << '\n';
 }

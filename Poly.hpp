@@ -15,6 +15,7 @@ public:
     b2World &world;
     b2Body *body;
     sf::VertexArray vertices;
+    bool toOld = false;
 
     b2Body *createBody();
     void createShape(int i);
@@ -30,4 +31,6 @@ public:
 
     Poly(const Poly &) = delete;
     Poly &operator=(const Poly &) = delete;
+
+    ~Poly();
 };

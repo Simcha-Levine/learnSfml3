@@ -3,7 +3,7 @@ if g++ -o hello main.cpp Ground.cpp Body.cpp Axis.cpp Poly.cpp ContactListener.c
     -lsfml-graphics -lsfml-window -lsfml-system \
     -pedantic-errors -Wall -Wextra -Weffc++; then
     echo "compiled successfully"
-    # ./hello
+    ./hello
 fi
 #-Weffc++
 # -Wsign-conversion
